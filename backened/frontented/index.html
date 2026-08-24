@@ -1,0 +1,2334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EverCare - Doctor Appointment</title>
+
+<style>
+
+/* ================================
+   GENERAL
+================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+
+    background: #f4f8ff;
+
+    color: #222;
+}
+
+
+/* ================================
+   NAVBAR
+================================ */
+
+nav {
+
+    background: white;
+
+    padding: 18px 7%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+}
+
+.logo {
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    color: #1769e0;
+}
+
+nav a {
+
+    text-decoration: none;
+
+    color: #333;
+
+    margin-left: 22px;
+
+    cursor: pointer;
+
+    font-weight: 500;
+}
+
+nav a:hover {
+
+    color: #1769e0;
+}
+
+
+/* ================================
+   USER AREA
+================================ */
+
+#user-area {
+
+    display: inline-block;
+}
+
+.user-name {
+
+    color: #1769e0;
+
+    font-weight: bold;
+
+    margin-left: 15px;
+}
+
+.logout-btn {
+
+    background: #dc3545;
+
+    color: white;
+
+    border: none;
+
+    padding: 8px 13px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    margin-left: 10px;
+}
+
+
+/* ================================
+   HERO
+================================ */
+
+.hero {
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #e8f2ff,
+        #ffffff
+    );
+}
+
+.hero h1 {
+
+    font-size: 45px;
+
+    color: #1769e0;
+
+    margin-bottom: 15px;
+}
+
+.hero p {
+
+    font-size: 18px;
+
+    color: #666;
+
+    max-width: 650px;
+
+    margin: auto;
+
+    line-height: 1.7;
+}
+
+.hero-btn {
+
+    display: inline-block;
+
+    margin-top: 25px;
+
+    background: #1769e0;
+
+    color: white;
+
+    padding: 14px 25px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+
+/* ================================
+   SECTION
+================================ */
+
+.doctors {
+
+    padding: 70px 7%;
+}
+
+.section-title {
+
+    text-align: center;
+
+    font-size: 32px;
+
+    margin-bottom: 40px;
+
+    color: #102a43;
+}
+
+
+/* ================================
+   DOCTORS
+================================ */
+
+.doctor-container {
+
+    display: grid;
+
+    grid-template-columns:
+    repeat(
+        auto-fit,
+        minmax(250px,1fr)
+    );
+
+    gap: 25px;
+}
+
+.doctor-card {
+
+    background: white;
+
+    padding: 30px 25px;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,0.08);
+
+    transition: 0.3s;
+}
+
+.doctor-card:hover {
+
+    transform: translateY(-7px);
+}
+
+.doctor-icon {
+
+    width: 85px;
+
+    height: 85px;
+
+    background: #e8f2ff;
+
+    border-radius: 50%;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 42px;
+}
+
+.doctor-card h3 {
+
+    margin: 18px 0 8px;
+}
+
+.specialization {
+
+    color: #1769e0;
+
+    font-weight: bold;
+}
+
+.rating {
+
+    margin: 12px 0;
+
+    color: #f5a623;
+}
+
+.doctor-card p {
+
+    color: #666;
+}
+
+.book-btn,
+.profile-btn {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    margin-top: 8px;
+}
+
+.book-btn {
+
+    background: #1769e0;
+}
+
+.book-btn:hover {
+
+    background: #0052c7;
+}
+
+.profile-btn {
+
+    background: #16a085;
+}
+
+.profile-btn:hover {
+
+    background: #12876f;
+}
+
+
+/* ================================
+   PROFILE
+================================ */
+
+#profile-section {
+
+    display: none;
+
+    padding: 60px 20px;
+}
+
+.profile-box {
+
+    max-width: 700px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 18px;
+
+    box-shadow:
+    0 5px 25px rgba(0,0,0,0.1);
+}
+
+.profile-top {
+
+    text-align: center;
+}
+
+.profile-icon {
+
+    font-size: 75px;
+}
+
+.profile-specialization {
+
+    color: #1769e0;
+
+    font-weight: bold;
+}
+
+.profile-info {
+
+    margin-top: 25px;
+
+    line-height: 1.8;
+}
+
+.availability {
+
+    margin-top: 25px;
+}
+
+.availability h3 {
+
+    color: #1769e0;
+}
+
+.day {
+
+    background: #eef5ff;
+
+    padding: 12px;
+
+    margin: 8px 0;
+
+    border-radius: 8px;
+}
+
+.close-btn {
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 20px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #555;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+/* ================================
+   AUTHENTICATION
+================================ */
+
+#auth-section {
+
+    display: none;
+
+    padding: 70px 20px;
+}
+
+.auth-box {
+
+    max-width: 450px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 18px;
+
+    box-shadow:
+    0 5px 25px rgba(0,0,0,0.1);
+}
+
+.auth-box h2 {
+
+    text-align: center;
+
+    color: #1769e0;
+
+    margin-bottom: 25px;
+}
+
+.auth-box input {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin: 8px 0 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+}
+
+.auth-btn {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #1769e0;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.auth-btn:hover {
+
+    background: #0052c7;
+}
+
+.auth-switch {
+
+    text-align: center;
+
+    margin-top: 18px;
+
+    color: #666;
+}
+
+.auth-switch a {
+
+    color: #1769e0;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+#auth-message {
+
+    text-align: center;
+
+    font-weight: bold;
+
+    margin-top: 15px;
+}
+
+
+/* ================================
+   APPOINTMENT
+================================ */
+
+#appointment-section {
+
+    display: none;
+
+    padding: 60px 20px;
+}
+
+.appointment-box {
+
+    max-width: 500px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 18px;
+
+    box-shadow:
+    0 5px 25px rgba(0,0,0,0.1);
+}
+
+.appointment-box h2 {
+
+    text-align: center;
+
+    color: #1769e0;
+}
+
+.selected-doctor {
+
+    background: #eef5ff;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    margin-bottom: 15px;
+
+    color: #1769e0;
+
+    font-weight: bold;
+}
+
+.appointment-box input {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin: 8px 0 15px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+}
+
+.submit-btn {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #1769e0;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+#message {
+
+    text-align: center;
+
+    font-weight: bold;
+
+    margin-top: 15px;
+}
+
+
+/* ================================
+   APPOINTMENTS
+================================ */
+
+#appointments-section {
+
+    padding: 70px 7%;
+}
+
+#appointments {
+
+    max-width: 800px;
+
+    margin: auto;
+}
+
+.appointment-card {
+
+    background: white;
+
+    padding: 22px;
+
+    margin-bottom: 15px;
+
+    border-radius: 12px;
+
+    box-shadow:
+    0 3px 15px rgba(0,0,0,0.08);
+
+    border-left: 5px solid #1769e0;
+}
+
+.appointment-card p {
+
+    margin: 9px 0;
+}
+
+.appointment-card button {
+
+    border: none;
+
+    color: white;
+
+    padding: 10px 15px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    margin-top: 8px;
+
+    margin-right: 5px;
+}
+
+.empty-message {
+
+    text-align: center;
+
+    color: #777;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
+footer {
+
+    background: #102a43;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 30px;
+
+    margin-top: 40px;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 700px) {
+
+    nav {
+
+        padding: 15px 20px;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    nav a {
+
+        margin-left: 8px;
+
+        font-size: 13px;
+    }
+
+    .hero h1 {
+
+        font-size: 34px;
+    }
+
+    .hero {
+
+        padding: 60px 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================================
+     NAVBAR
+================================ -->
+
+<nav>
+
+<div class="logo">
+🩺 EverCare
+</div>
+
+<div>
+
+<a href="#home">
+Home
+</a>
+
+<a href="#doctors">
+Doctors
+</a>
+
+<a href="#appointments-section">
+Appointments
+</a>
+
+<span id="user-area">
+
+<a
+href="#"
+onclick="showAuth('login'); return false;"
+>
+Login
+</a>
+
+<a
+href="#"
+onclick="showAuth('signup'); return false;"
+>
+Sign Up
+</a>
+
+</span>
+
+</div>
+
+</nav>
+
+
+<!-- ================================
+     HERO
+================================ -->
+
+<section
+class="hero"
+id="home"
+>
+
+<h1>
+Find the Right Doctor
+</h1>
+
+<p>
+Professional healthcare at your fingertips.
+Book your appointment easily and quickly.
+</p>
+
+<a
+class="hero-btn"
+href="#doctors"
+>
+Find a Doctor
+</a>
+
+</section>
+
+
+<!-- ================================
+     DOCTORS
+================================ -->
+
+<section
+class="doctors"
+id="doctors"
+>
+
+<h2 class="section-title">
+Our Doctors
+</h2>
+
+<div class="doctor-container">
+
+
+<!-- DR AHMED -->
+
+<div class="doctor-card">
+
+<div class="doctor-icon">
+👨‍⚕️
+</div>
+
+<h3>
+Dr. Ahmed
+</h3>
+
+<div class="specialization">
+Cardiologist
+</div>
+
+<div class="rating">
+⭐⭐⭐⭐⭐ 4.8
+</div>
+
+<p>
+10+ years experience
+</p>
+
+<button
+class="profile-btn"
+onclick="showProfile('ahmed')"
+>
+View Profile
+</button>
+
+<button
+class="book-btn"
+onclick="selectDoctor('Dr. Ahmed')"
+>
+Book Appointment
+</button>
+
+</div>
+
+
+<!-- DR SARAH -->
+
+<div class="doctor-card">
+
+<div class="doctor-icon">
+👩‍⚕️
+</div>
+
+<h3>
+Dr. Sarah
+</h3>
+
+<div class="specialization">
+Dermatologist
+</div>
+
+<div class="rating">
+⭐⭐⭐⭐⭐ 4.9
+</div>
+
+<p>
+8+ years experience
+</p>
+
+<button
+class="profile-btn"
+onclick="showProfile('sarah')"
+>
+View Profile
+</button>
+
+<button
+class="book-btn"
+onclick="selectDoctor('Dr. Sarah')"
+>
+Book Appointment
+</button>
+
+</div>
+
+
+<!-- DR ALI -->
+
+<div class="doctor-card">
+
+<div class="doctor-icon">
+👨‍⚕️
+</div>
+
+<h3>
+Dr. Ali
+</h3>
+
+<div class="specialization">
+Neurologist
+</div>
+
+<div class="rating">
+⭐⭐⭐⭐ 4.7
+</div>
+
+<p>
+7+ years experience
+</p>
+
+<button
+class="profile-btn"
+onclick="showProfile('ali')"
+>
+View Profile
+</button>
+
+<button
+class="book-btn"
+onclick="selectDoctor('Dr. Ali')"
+>
+Book Appointment
+</button>
+
+</div>
+
+
+<!-- DR MARIA -->
+
+<div class="doctor-card">
+
+<div class="doctor-icon">
+👩‍⚕️
+</div>
+
+<h3>
+Dr. Maria
+</h3>
+
+<div class="specialization">
+Pediatrician
+</div>
+
+<div class="rating">
+⭐⭐⭐⭐⭐ 4.9
+</div>
+
+<p>
+9+ years experience
+</p>
+
+8+ years experience
+</p>
+
+<button
+class="profile-btn"
+onclick="showProfile('maria')"
+>
+View Profile
+</button>
+
+<button
+class="book-btn"
+onclick="selectDoctor('Dr. Maria')"
+>
+Book Appointment
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================================
+     PROFILE
+================================ -->
+
+<section
+id="profile-section"
+>
+
+<div class="profile-box">
+
+<div
+class="profile-top"
+id="profile-content"
+>
+</div>
+
+<button
+class="close-btn"
+onclick="closeProfile()"
+>
+Close Profile
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================================
+     AUTH
+================================ -->
+
+<section
+id="auth-section"
+>
+
+<div class="auth-box">
+
+<h2 id="auth-title">
+Patient Login
+</h2>
+
+<div id="signup-fields">
+
+<input
+type="text"
+id="signup-name"
+placeholder="Full Name"
+>
+
+</div>
+
+<input
+type="email"
+id="auth-email"
+placeholder="Email Address"
+>
+
+<input
+type="password"
+id="auth-password"
+placeholder="Password"
+>
+
+<button
+class="auth-btn"
+onclick="submitAuth()"
+id="auth-button"
+>
+Login
+</button>
+
+<p
+class="auth-switch"
+id="auth-switch"
+>
+Don't have an account?
+
+<a
+onclick="showAuth('signup')"
+>
+Sign Up
+</a>
+
+</p>
+
+<p id="auth-message"></p>
+
+</div>
+
+</section>
+
+
+<!-- ================================
+     APPOINTMENT
+================================ -->
+
+<section
+id="appointment-section"
+>
+
+<div class="appointment-box">
+
+<h2>
+Book Appointment
+</h2>
+
+<div
+class="selected-doctor"
+id="selectedDoctor"
+>
+Select a doctor
+</div>
+
+<input
+type="text"
+id="patientName"
+placeholder="Patient Name"
+>
+
+<input
+type="date"
+id="date"
+>
+
+<input
+type="time"
+id="time"
+>
+
+<button
+class="submit-btn"
+onclick="bookAppointment()"
+>
+Book Appointment
+</button>
+
+<p id="message"></p>
+
+</div>
+
+</section>
+
+
+<!-- ================================
+     APPOINTMENTS
+================================ -->
+
+<section
+id="appointments-section"
+>
+
+<h2 class="section-title">
+My Appointments
+</h2>
+
+<div id="appointments"></div>
+
+</section>
+
+
+<!-- ================================
+     FOOTER
+================================ -->
+
+<footer>
+
+<p>
+©️ 2026 EverCare Doctor Appointment
+</p>
+
+<p>
+Your Health, Our Priority ❤️
+</p>
+
+</footer>
+
+
+<script>
+
+
+/* ================================
+   AUTH STATE
+================================ */
+
+let currentUser =
+JSON.parse(
+    localStorage.getItem("EverCareUser")
+) || null;
+
+let authMode = "login";
+
+
+/* ================================
+   DOCTOR DATA
+================================ */
+
+const doctors = {
+
+ahmed: {
+
+name: "Dr. Ahmed",
+
+specialization: "Cardiologist",
+
+experience: "10+ years",
+
+fee: "Rs. 2,000",
+
+rating: "4.8",
+
+about:
+"Dr. Ahmed is an experienced cardiologist specializing in heart health and cardiovascular care.",
+
+availability: [
+
+"Monday: 10:00 AM - 2:00 PM",
+
+"Wednesday: 4:00 PM - 8:00 PM",
+
+"Friday: 10:00 AM - 1:00 PM"
+
+]
+
+},
+
+sarah: {
+
+name: "Dr. Sarah",
+
+specialization: "Dermatologist",
+
+experience: "8+ years",
+
+fee: "Rs. 1,800",
+
+rating: "4.9",
+
+about:
+"Dr. Sarah specializes in skin, hair and cosmetic dermatology treatments.",
+
+availability: [
+
+"Tuesday: 10:00 AM - 2:00 PM",
+
+"Thursday: 4:00 PM - 8:00 PM",
+
+"Saturday: 11:00 AM - 3:00 PM"
+
+]
+
+},
+
+ali: {
+
+name: "Dr. Ali",
+
+specialization: "Neurologist",
+
+experience: "7+ years",
+
+fee: "Rs. 2,500",
+
+rating: "4.7",
+
+about:
+"Dr. Ali provides neurological consultation and treatment for nervous system conditions.",
+
+availability: [
+
+"Monday: 4:00 PM - 8:00 PM",
+
+"Wednesday: 10:00 AM - 2:00 PM",
+
+"Saturday: 4:00 PM - 7:00 PM"
+
+]
+
+},
+
+maria: {
+
+name: "Dr. Maria",
+
+specialization: "Pediatrician",
+
+experience: "9+ years",
+
+fee: "Rs. 1,500",
+
+rating: "4.9",
+
+about:
+"Dr. Maria specializes in children's health, growth and development.",
+
+availability: [
+
+"Tuesday: 9:00 AM - 1:00 PM",
+
+"Thursday: 4:00 PM - 8:00 PM",
+
+"Friday: 10:00 AM - 2:00 PM"
+
+]
+
+}
+
+};
+
+
+/* ================================
+   PROFILE
+================================ */
+
+function showProfile(id) {
+
+const doctor =
+doctors[id];
+
+const profile =
+document.getElementById(
+"profile-content"
+);
+
+let days = "";
+
+doctor.availability.forEach(
+day => {
+
+days += `
+<div class="day">
+📅 ${day}
+</div>
+`;
+
+});
+
+profile.innerHTML = `
+
+<div class="profile-icon">
+👨‍⚕️
+</div>
+
+<h2>
+${doctor.name}
+</h2>
+
+<p class="profile-specialization">
+${doctor.specialization}
+</p>
+
+<div class="profile-info">
+
+<p>
+⭐ <strong>Rating:</strong>
+${doctor.rating}
+</p>
+
+<p>
+🩺 <strong>Experience:</strong>
+${doctor.experience}
+</p>
+
+<p>
+💰 <strong>Consultation Fee:</strong>
+${doctor.fee}
+</p>
+
+<p>
+<strong>About:</strong><br>
+${doctor.about}
+</p>
+
+</div>
+
+<div class="availability">
+
+<h3>
+Available Days & Times
+</h3>
+
+${days}
+
+</div>
+
+`;
+
+document.getElementById(
+"profile-section"
+).style.display =
+"block";
+
+document.getElementById(
+"profile-section"
+).scrollIntoView({
+behavior: "smooth"
+});
+
+}
+
+
+function closeProfile() {
+
+document.getElementById(
+"profile-section"
+).style.display =
+"none";
+
+}
+
+
+/* ================================
+   AUTH UI
+================================ */
+
+function showAuth(mode) {
+
+authMode = mode;
+
+const section =
+document.getElementById(
+"auth-section"
+);
+
+const title =
+document.getElementById(
+"auth-title"
+);
+
+const button =
+document.getElementById(
+"auth-button"
+);
+
+const signupFields =
+document.getElementById(
+"signup-fields"
+);
+
+const switchText =
+document.getElementById(
+"auth-switch"
+);
+
+const message =
+document.getElementById(
+"auth-message"
+);
+
+message.innerText = "";
+
+section.style.display =
+"block";
+
+if (mode === "signup") {
+
+title.innerText =
+"Create Patient Account";
+
+button.innerText =
+"Create Account";
+
+signupFields.style.display =
+"block";
+
+switchText.innerHTML = `
+Already have an account?
+<a onclick="showAuth('login')">
+Login
+</a>
+`;
+
+} else {
+
+title.innerText =
+"Patient Login";
+
+button.innerText =
+"Login";
+
+signupFields.style.display =
+"none";
+
+switchText.innerHTML = `
+Don't have an account?
+<a onclick="showAuth('signup')">
+Sign Up
+</a>
+`;
+
+}
+
+section.scrollIntoView({
+behavior: "smooth"
+});
+
+}
+
+
+/* ================================
+   SIGNUP / LOGIN
+================================ */
+
+async function submitAuth() {
+
+const email =
+document.getElementById(
+"auth-email"
+).value.trim();
+
+const password =
+document.getElementById(
+"auth-password"
+).value;
+
+const message =
+document.getElementById(
+"auth-message"
+);
+
+if (!email || !password) {
+
+message.innerText =
+"Please enter email and password.";
+
+message.style.color =
+"#dc3545";
+
+return;
+
+}
+
+
+if (authMode === "signup") {
+
+const name =
+document.getElementById(
+"signup-name"
+).value.trim();
+
+if (!name) {
+
+message.innerText =
+"Please enter your name.";
+
+message.style.color =
+"#dc3545";
+
+return;
+
+}
+
+
+if (password.length < 6) {
+
+message.innerText =
+"Password must be at least 6 characters.";
+
+message.style.color =
+"#dc3545";
+
+return;
+
+}
+
+try {
+
+const response =
+await fetch(
+"/api/signup",
+{
+
+method: "POST",
+
+headers: {
+
+"Content-Type":
+"application/json"
+
+},
+
+body: JSON.stringify({
+
+name: name,
+
+email: email,
+
+password: password
+
+})
+
+}
+);
+
+const data =
+await response.json();
+
+if (response.ok) {
+
+message.innerText =
+"✅ Account created successfully!";
+
+message.style.color =
+"#16a085";
+
+document.getElementById(
+"signup-name"
+).value = "";
+
+document.getElementById(
+"auth-email"
+).value = "";
+
+document.getElementById(
+"auth-password"
+).value = "";
+
+setTimeout(
+() => {
+
+showAuth("login");
+
+document.getElementById(
+"auth-email"
+).value =
+email;
+
+},
+1000
+);
+
+} else {
+
+message.innerText =
+data.message ||
+"Failed to create account.";
+
+message.style.color =
+"#dc3545";
+
+}
+
+} catch (error) {
+
+console.error(error);
+
+message.innerText =
+"Failed to connect to server.";
+
+message.style.color =
+"#dc3545";
+
+}
+
+return;
+
+}
+
+
+/* LOGIN */
+
+try {
+
+const response =
+await fetch(
+"/api/login",
+{
+
+method: "POST",
+
+headers: {
+
+"Content-Type":
+"application/json"
+
+},
+
+body: JSON.stringify({
+
+email: email,
+
+password: password
+
+})
+
+}
+);
+
+const data =
+await response.json();
+
+if (response.ok) {
+
+currentUser =
+data.user;
+
+localStorage.setItem(
+"EverCareUser",
+JSON.stringify(currentUser)
+);
+
+message.innerText =
+"✅ Login successful!";
+
+message.style.color =
+"#16a085";
+
+updateUserArea();
+
+setTimeout(
+() => {
+
+document.getElementById(
+"auth-section"
+).style.display =
+"none";
+
+},
+800
+);
+
+} else {
+
+message.innerText =
+data.message ||
+"Invalid email or password.";
+
+message.style.color =
+"#dc3545";
+
+}
+
+} catch (error) {
+
+console.error(error);
+
+message.innerText =
+"Failed to connect to server.";
+
+message.style.color =
+"#dc3545";
+
+}
+
+}
+
+
+/* ================================
+   USER AREA
+================================ */
+
+function updateUserArea() {
+
+const userArea =
+document.getElementById(
+"user-area"
+);
+
+if (currentUser) {
+
+userArea.innerHTML = `
+
+<span class="user-name">
+👤 ${currentUser.name}
+</span>
+
+<button
+class="logout-btn"
+onclick="logout()"
+>
+Logout
+</button>
+
+`;
+
+} else {
+
+userArea.innerHTML = `
+
+<a
+href="#"
+onclick="showAuth('login'); return false;"
+>
+Login
+</a>
+
+<a
+href="#"
+onclick="showAuth('signup'); return false;"
+>
+Sign Up
+</a>
+
+`;
+
+}
+
+}
+
+
+function logout() {
+
+currentUser = null;
+
+localStorage.removeItem(
+"EverCareUser"
+);
+
+updateUserArea();
+
+alert(
+"You have been logged out."
+);
+
+}
+
+
+/* ================================
+   SELECT DOCTOR
+================================ */
+
+let selectedDoctor = "";
+
+
+function selectDoctor(doctorName) {
+
+if (!currentUser) {
+
+alert(
+"Please login or create an account before booking an appointment."
+);
+
+showAuth("login");
+
+return;
+
+}
+
+selectedDoctor =
+doctorName;
+
+document.getElementById(
+"selectedDoctor"
+).innerText =
+"Selected Doctor: " +
+doctorName;
+
+document.getElementById(
+"patientName"
+).value =
+currentUser.name;
+
+document.getElementById(
+"appointment-section"
+).style.display =
+"block";
+
+document.getElementById(
+"appointment-section"
+).scrollIntoView({
+behavior: "smooth"
+});
+
+}
+
+
+/* ================================
+   BOOK APPOINTMENT
+================================ */
+
+async function bookAppointment() {
+
+if (!currentUser) {
+
+alert(
+"Please login first."
+);
+
+showAuth("login");
+
+return;
+
+}
+
+const patientName =
+currentUser.name;
+
+const date =
+document.getElementById(
+"date"
+).value;
+
+const time =
+document.getElementById(
+"time"
+).value;
+
+const message =
+document.getElementById(
+"message"
+);
+
+
+if (
+!selectedDoctor ||
+!date ||
+!time
+) {
+
+message.innerText =
+"Please select doctor, date and time.";
+
+message.style.color =
+"#dc3545";
+
+return;
+
+}
+
+
+try {
+
+const response =
+await fetch(
+"/api/appointments",
+{
+
+method: "POST",
+
+headers: {
+
+"Content-Type":
+"application/json"
+
+},
+
+body: JSON.stringify({
+
+doctorId:
+selectedDoctor,
+
+patientName:
+patientName,
+
+date:
+date,
+
+time:
+time
+
+})
+
+}
+);
+
+const data =
+await response.json();
+
+if (response.ok) {
+
+message.innerText =
+"✅ Appointment booked successfully!";
+
+message.style.color =
+"#16a085";
+
+document.getElementById(
+"date"
+).value = "";
+
+document.getElementById(
+"time"
+).value = "";
+
+loadAppointments();
+
+} else {
+
+message.innerText =
+data.message ||
+"Something went wrong.";
+
+message.style.color =
+"#dc3545";
+
+}
+
+} catch (error) {
+
+console.error(error);
+
+message.innerText =
+"Failed to connect to server.";
+
+message.style.color =
+"#dc3545";
+
+}
+
+}
+
+
+/* ================================
+   LOAD APPOINTMENTS
+================================ */
+
+async function loadAppointments() {
+
+try {
+
+const response =
+await fetch(
+"/api/appointments"
+);
+
+const appointments =
+await response.json();
+
+const container =
+document.getElementById(
+"appointments"
+);
+
+container.innerHTML = "";
+
+
+if (
+!Array.isArray(appointments) ||
+appointments.length === 0
+) {
+
+container.innerHTML = `
+<div class="empty-message">
+No appointments found.
+</div>
+`;
+
+return;
+
+}
+
+
+appointments.forEach(
+appointment => {
+
+const div =
+document.createElement(
+"div"
+);
+
+div.className =
+"appointment-card";
+
+
+div.innerHTML = `
+
+<p>
+👤 <strong>Patient:</strong>
+${appointment.patientName}
+</p>
+
+<p>
+👨‍⚕️ <strong>Doctor:</strong>
+${appointment.doctorId}
+</p>
+
+<p>
+📅 <strong>Date:</strong>
+${formatDate(appointment.date)}
+</p>
+
+<p>
+⏰ <strong>Time:</strong>
+${appointment.time}
+</p>
+
+<button
+onclick="rescheduleAppointment(${appointment.id})"
+style="background:#f39c12;"
+>
+✏️ Reschedule
+</button>
+
+<button
+onclick="cancelAppointment(${appointment.id})"
+style="background:#dc3545;"
+>
+❌ Cancel
+</button>
+
+`;
+
+container.appendChild(div);
+
+});
+
+} catch (error) {
+
+console.error(error);
+
+document.getElementById(
+"appointments"
+).innerHTML = `
+<div class="empty-message">
+Unable to load appointments.
+</div>
+`;
+
+}
+
+}
+
+
+/* ================================
+   DATE FORMAT
+================================ */
+
+function formatDate(dateValue) {
+
+if (!dateValue) {
+return "";
+}
+
+const date =
+new Date(dateValue);
+
+if (isNaN(date.getTime())) {
+return dateValue;
+}
+
+return date.toLocaleDateString(
+"en-GB",
+{
+day: "2-digit",
+month: "short",
+year: "numeric"
+}
+);
+
+}
+
+
+/* ================================
+   RESCHEDULE
+================================ */
+
+async function rescheduleAppointment(id) {
+
+if (!currentUser) {
+
+alert(
+"Please login first."
+);
+
+return;
+
+}
+
+const newDate =
+prompt(
+"Enter new date (YYYY-MM-DD):"
+);
+
+if (!newDate) {
+return;
+}
+
+const newTime =
+prompt(
+"Enter new time (HH:MM):"
+);
+
+if (!newTime) {
+return;
+}
+
+
+try {
+
+const response =
+await fetch(
+`/api/appointments/${id}`,
+{
+
+method: "PUT",
+
+headers: {
+
+"Content-Type":
+"application/json"
+
+},
+
+body: JSON.stringify({
+
+date:
+newDate,
+
+time:
+newTime
+
+})
+
+}
+);
+
+const data =
+await response.json();
+
+if (response.ok) {
+
+alert(
+"Appointment rescheduled successfully!"
+);
+
+loadAppointments();
+
+} else {
+
+alert(
+data.message ||
+"Failed to reschedule appointment."
+);
+
+}
+
+} catch (error) {
+
+console.error(error);
+
+alert(
+"Failed to connect to server."
+);
+
+}
+
+}
+
+
+/* ================================
+   CANCEL
+================================ */
+
+async function cancelAppointment(id) {
+
+if (!currentUser) {
+
+alert(
+"Please login first."
+);
+
+return;
+
+}
+
+const confirmCancel =
+confirm(
+"Are you sure you want to cancel this appointment?"
+);
+
+if (!confirmCancel) {
+return;
+}
+
+
+try {
+
+const response =
+await fetch(
+`/api/appointments/${id}`,
+{
+
+method:
+"DELETE"
+
+}
+
+);
+
+const data =
+await response.json();
+
+if (response.ok) {
+
+alert(
+"Appointment cancelled successfully!"
+);
+
+loadAppointments();
+
+} else {
+
+alert(
+data.message ||
+"Failed to cancel appointment."
+);
+
+}
+
+} catch (error) {
+
+console.error(error);
+
+alert(
+"Failed to connect to server."
+);
+
+}
+
+}
+
+
+/* ================================
+   INITIALIZE
+================================ */
+
+updateUserArea();
+
+loadAppointments();
+
+</script>
+
+</body>
+
+</html>
